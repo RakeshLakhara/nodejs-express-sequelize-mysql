@@ -17,6 +17,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
+
+// just use sync(); without force at production
+//db.sequelize.sync();
 db.sequelize.sync({ force: true }).then(() => {
     console.log("Drop and re-sync db.");
   });
